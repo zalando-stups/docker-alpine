@@ -3,7 +3,8 @@ Use the following command to build the image
     docker build \
       -t registry.opensource.zalan.do/java:8u92-jdk-alpine \
       -t registry.opensource.zalan.do/java:openjdk-8u92-jdk-alpine \
-      -t registry.opensource.zalan.do/java:openjdk-8u92-alpine
+      -t registry.opensource.zalan.do/java:openjdk-8u92-alpine \
+      .
 
 Use the following command to test the image
 

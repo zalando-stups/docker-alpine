@@ -6,6 +6,7 @@ RUN apk --no-cache add ca-certificates curl
 # add Zalando CA bundle
 RUN curl https://secure-static.ztat.net/ca/zalando-root.ca > /usr/local/share/ca-certificates/zalando-root.crt
 RUN curl https://secure-static.ztat.net/ca/zalando-service.ca > /usr/local/share/ca-certificates/zalando-service.crt
+ADD https://secure-static.ztat.net/ca/zalando-service-sha256.crt /usr/local/share/ca-certificates/zalando-service-sha256.crt
 
 # add AWS RDS CA bundle
 RUN mkdir /tmp/rds-ca && \

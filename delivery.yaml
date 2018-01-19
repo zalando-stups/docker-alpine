@@ -1,0 +1,25 @@
+version: "2017-09-20"
+pipeline:
+  - id: build
+    type: script
+    commands:
+    - desc: 'Install required build software'
+      cmd: 'apt-get install -y make git apt-transport-https ca-certificates curl'
+    - desc: 'Install Docker'
+      cmd: 'curl -sSL https://delivery.cloud.zalando.com/utils/ensure-docker | sh'
+    - desc: 'Build'
+      cmd: |
+        image=alpine-temp:${CDP_BUILD_VERSION}
+        docker build -t $image --squash .
+        sed -i "s,UNTESTED,$image,g" Dockerfile.test
+        docker build -t $image-test -f Dockerfile.test .
+        # get current version (/etc/alpine-release)
+        version=$(docker run $image-test)
+        echo $version
+        release=registry-write.opensource.zalan.do/stups/alpine:$version-${CDP_TARGET_BRANCH_COUNTER}
+        IS_PR_BUILD=${CDP_PULL_REQUEST_NUMBER+"true"}
+        if [[ $CDP_TARGET_BRANCH == "master" && ${IS_PR_BUILD} != "true" ]]
+        then
+            docker tag $image $release
+            docker push $release
+        fi

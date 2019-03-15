@@ -2,10 +2,10 @@
 Alpine Base Image
 =================
 
-This Docker base image contains Alpine Linux 3.8 and the Zalando CA certificate.
+This Docker base image contains Alpine Linux 3.9 and the Zalando CA certificate.
 Versions of this image will be immutable, i.e. there is no "latest" tag, but instead version numbers are incremented like::
 
-    <ALPINE_VERSION>-<COUNTER> (example: "3.8-1")
+    <ALPINE_VERSION>-<COUNTER> (example: "3.9-1")
 
 You can find the `latest Alpine Docker image in our open source registry`_.
 

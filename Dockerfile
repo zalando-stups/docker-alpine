@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 MAINTAINER Zalando SE
 
 RUN apk --no-cache upgrade && apk --no-cache add ca-certificates

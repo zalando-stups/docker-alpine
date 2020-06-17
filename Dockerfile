@@ -1,5 +1,6 @@
-FROM alpine:3.11
-MAINTAINER Zalando SE
+FROM alpine:3.12
+
+LABEL maintainer="Zalando SE"
 
 RUN apk --no-cache upgrade && apk --no-cache add ca-certificates
 
